@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 # filepath: /workspace/Taskmaster-JOC/taskmaster/settings.py
 import dj_database_url
+import os
 from pathlib import Path
 from .env import SECRET_KEY, DATABASE_URL
 
@@ -34,7 +35,7 @@ SECRET_KEY = 'django-insecure-m)u+emcblvtf)aj6oimnit#%cd!+cxe(d($rij$#p-qguwtx3$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -45,8 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'tasks',
     'django.contrib.staticfiles',
+    'tasks',
 ]
 
 MIDDLEWARE = [
@@ -61,10 +62,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'taskmaster.urls'
 
+import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
