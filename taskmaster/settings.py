@@ -10,12 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-import os
+# filepath: /workspace/Taskmaster-JOC/taskmaster/settings.py
+import dj_database_url
 from pathlib import Path
-from .env import SECRET_KEY
+from .env import SECRET_KEY, DATABASE_URL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+DATABASES = {
+    'default': dj_database_url.parse(DATABASE_URL)
+}
 
 
 # Quick-start development settings - unsuitable for production
